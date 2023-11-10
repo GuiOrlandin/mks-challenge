@@ -1,27 +1,28 @@
 import Image from "next/image";
 
 import shoppinBagIcon from "../../../../../public/shoppingBagIcon.svg";
-import TESTSBG from "../../../../../public/imageProductTEST.svg";
 
 import {
   BuyButton,
   CardContainer,
-  CardDescription,
   CertificateContainer,
+  ProductDescription,
   ProductName,
   ProductNameAndPrice,
   ProductPrice,
 } from "./styles";
 import { Product } from "../..";
+import { formatNumberWithSeparator } from "@/utils/numberFomater";
 
 interface Props {
   product: Product;
+  handleAddNewItem: (item: Product) => void;
 }
 
-export default function CardOfProduct({ product }: Props) {
+export default function CardOfProduct({ product, handleAddNewItem }: Props) {
   return (
     <CardContainer>
-      <CardDescription>
+      <ProductDescription>
         <Image
           src={product.photo}
           alt=""
@@ -31,14 +32,16 @@ export default function CardOfProduct({ product }: Props) {
         />
         <ProductNameAndPrice>
           <ProductName>{product?.name}</ProductName>
-          <ProductPrice>R${parseFloat(product.price)}</ProductPrice>
+          <ProductPrice>
+            R${formatNumberWithSeparator(parseFloat(product.price))}
+          </ProductPrice>
         </ProductNameAndPrice>
         <CertificateContainer>
           Redesigned from scratch and completely revised.
         </CertificateContainer>
-      </CardDescription>
+      </ProductDescription>
 
-      <BuyButton>
+      <BuyButton onClick={() => handleAddNewItem(product)}>
         <Image src={shoppinBagIcon} alt="shopping bag icon" />
         <p>COMPRAR</p>
       </BuyButton>
