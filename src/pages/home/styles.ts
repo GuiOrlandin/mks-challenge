@@ -146,6 +146,10 @@ export const Close = styled(DialogClose)`
   padding-bottom: 0.2rem;
   margin: 9% 90% 0% 88%;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @media (max-width: 375px) {
     margin: 9% 90% 0% 84%;
   }
@@ -153,19 +157,16 @@ export const Close = styled(DialogClose)`
 
 export const AmountAndPrice = styled.div`
   display: flex;
-  position: absolute;
   gap: 12.75rem;
+  margin-bottom: 2rem;
 
   font-size: 1.75rem;
   font-weight: 700;
   color: #fff;
-  top: 80%;
-  left: 10%;
 
   @media (max-width: 375px) {
     gap: 4.56rem;
-    top: 84%;
-    left: 10%;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -177,18 +178,17 @@ export const Title = styled(DialogTitle)`
   font-size: 1.6875rem;
   font-weight: 700;
   color: #ffffff;
-  margin: -11% 90% 0% 10%;
-
-  @media (max-width: 375px) {
-  }
+  margin: -11% 90% 13% 10%;
 `;
 
 export const Content = styled(DialogContent)`
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   width: 30.375rem;
   height: 100vh;
 
   background: #0f52ba;
-  overflow: visible;
+  overflow: hidden;
   z-index: 3;
 
   position: fixed;
@@ -198,6 +198,8 @@ export const Content = styled(DialogContent)`
   box-shadow: 4px 0 10px rgba(0, 0, 0, 1);
 
   @media (max-width: 375px) {
+    grid-template-rows: 0.1fr 0.845fr 0.1fr;
+
     width: 20.625rem;
     height: 50.75rem;
   }
@@ -205,31 +207,52 @@ export const Content = styled(DialogContent)`
 
 export const FinalizePurchase = styled.div`
   display: flex;
-  position: absolute;
+  flex-direction: column;
   align-items: center;
-  width: 30.375rem;
-  height: 6.0625rem;
-  background-color: #000000;
-  top: 88.9%;
+  z-index: 5;
+
+  top: 90.4%;
   color: #ffffff;
   font-weight: 700;
   font-size: 1.75rem;
   justify-content: center;
 
+  button {
+    background-color: #000000;
+    width: 30.375rem;
+    height: 6.0625rem;
+    border: none;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.75rem;
+    font-family: "Montserrat", sans-serif;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   @media (max-width: 375px) {
     width: 20.625rem;
     height: 4.117875rem;
-    margin: 199.6% 0% 40% 0%;
 
-    font-size: 1.25rem;
+    button {
+      padding: 1.9rem;
+    }
   }
 `;
 
 export const SelectedProductsContainer = styled.div`
   display: flex;
-  overflow: visible;
+  max-height: 47rem;
+  overflow: auto;
 
   flex-direction: column;
-  padding: 2.69rem 3.75rem 0 2.93rem;
+  padding: 0 3.75rem 0 2.93rem;
+  margin-bottom: 2rem;
   gap: 1.375rem;
+
+  @media (max-width: 375px) {
+    max-height: 32rem;
+  }
 `;

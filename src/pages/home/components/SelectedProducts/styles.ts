@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const SelectedProductsContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 0.9fr 60px 90px;
   align-items: center;
   background: #ffffff;
   border-radius: 8px;
@@ -10,16 +11,37 @@ export const SelectedProductsContainer = styled.div`
   p {
     font-size: 0.3125rem;
   }
+
+  @media (max-width: 375px) {
+    display: flex;
+    flex-direction: column;
+    padding: 1.43rem 1.43rem 1.43rem 1rem;
+    width: 15.625;
+
+    img {
+      width: 5rem;
+      height: 5.944rem;
+    }
+  }
 `;
 
 export const ProductContainer = styled.div`
   display: flex;
   align-items: center;
   background: #ffffff;
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+  }
 `;
 
 export const ProductName = styled.div`
-  margin: 0.6rem 1.2rem 0.1rem 1.3rem;
+  margin: 0 0.8rem;
+
+  @media (max-width: 375px) {
+    text-align: center;
+    margin: 0.6875rem 0;
+  }
 `;
 
 export const AddOrRemoveProductsButtonsContainer = styled.div`
@@ -28,13 +50,24 @@ export const AddOrRemoveProductsButtonsContainer = styled.div`
   border-radius: 8px;
   margin-top: 0.2rem;
 
+  @media (max-width: 375px) {
+    margin-top: 0;
 
+    width: 5.0855rem;
+    height: 2.125rem;
+    align-items: center;
+    justify-content: space-around;
+  }
 `;
 export const AddProductButton = styled.button`
   padding: 0 0.5rem 0 0.3875rem;
   border: none;
   background: none;
   font-size: 0.75rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const RemoveProductButton = styled.button`
@@ -42,6 +75,10 @@ export const RemoveProductButton = styled.button`
   font-size: 0.75rem;
   border: none;
   background: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const NumberOfProducts = styled.span`
@@ -71,7 +108,40 @@ export const NumberOfProducts = styled.span`
 `;
 
 export const PriceOfProduct = styled.span`
+  display: flex;
+  text-align: center;
   font-size: 0.875rem;
   font-weight: 700;
   margin: 0.4rem 0.5rem 0 1.2rem;
+
+  @media (max-width: 375px) {
+    margin: 0.4rem 0 0.5rem 0.3rem;
+    padding: 0.5rem;
+    color: #ffff;
+    border-radius: 8px;
+
+    background: #373737;
+
+    p {
+      display: none;
+    }
+  }
+`;
+
+export const ButtonsAndPriceContainer = styled.span`
+  display: flex;
+
+  p {
+    margin: -0.3rem -0.8rem 0.3rem 0;
+  }
+
+  @media (max-width: 375px) {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+
+    p {
+      display: none;
+    }
+  }
 `;

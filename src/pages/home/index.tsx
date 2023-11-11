@@ -34,6 +34,7 @@ export interface Product {
   photo: string;
   created_at: string;
   updated_at: string;
+  quantity?: number;
 }
 
 interface ProductsResponse {
@@ -42,12 +43,7 @@ interface ProductsResponse {
 
 export default function Home() {
   const [listOfProducts, setListOfProducts] = useState<Product[]>([]);
-  const [cartItems, SetCartItems] = useState<Product[]>([]);
-
-  function handleAddNewItem(item: Product) {
-    SetCartItems((state) => [...state, item]);
-    console.log(cartItems);
-  }
+  const [cartItems, setCartItems] = useState<Product[]>([]);
 
   async function getProducts() {
     try {
@@ -61,6 +57,61 @@ export default function Home() {
       }
     }
   }
+
+  function handleAddNewItem(item: Product) {
+    const productAlreadyInCart = cartItems.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    if (productAlreadyInCart > -1) {
+      const updatedCartItems = cartItems.map((cartItem, index) => {
+        if (index === productAlreadyInCart) {
+          return {
+            ...cartItem,
+            quantity: cartItem.quantity! + 1,
+          };
+        }
+        return cartItem;
+      });
+
+      setCartItems(updatedCartItems);
+    } else {
+      const newProductInCart: Product = {
+        ...item,
+        quantity: 1,
+      };
+      setCartItems([...cartItems, newProductInCart]);
+    }
+  }
+
+  function handleRemoveItem(item: Product) {
+    const productFinded = cartItems.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    if (productFinded > -1 && item.quantity! > 1) {
+      const removeCartItems = cartItems.map((cartItem, index) => {
+        if (index === productFinded) {
+          return {
+            ...cartItem,
+            quantity: cartItem.quantity! - 1,
+          };
+        }
+        return cartItem;
+      });
+      setCartItems(removeCartItems);
+    }
+  }
+
+  function getTotalPrice() {
+    let totalPriceOfProducts = 0;
+    cartItems.forEach((element) => {
+      totalPriceOfProducts += parseFloat(element.price) * element.quantity!;
+    });
+    return totalPriceOfProducts;
+  }
+
+  const totalPrice = getTotalPrice();
 
   useEffect(() => {
     getProducts();
@@ -81,19 +132,26 @@ export default function Home() {
         </Trigger>
         <Portal>
           <Content>
-            <Close>x</Close>
-            <Title>Carrinho de compras</Title>
+            <div>
+              <Close>x</Close>
+              <Title>Carrinho de compras</Title>
+            </div>
             <SelectedProductsContainer>
               {cartItems.map((items) => (
-                <SelectedProducts product={items} />
+                <SelectedProducts
+                  product={items}
+                  key={items.id}
+                  handleAddNewItem={() => handleAddNewItem(items)}
+                  handleRemoveItem={() => handleRemoveItem(items)}
+                />
               ))}
             </SelectedProductsContainer>
-            <AmountAndPrice>
-              <p>Total:</p>
-              <span>R$798</span>
-            </AmountAndPrice>
             <FinalizePurchase>
-              <p>Finalizar Compra</p>
+              <AmountAndPrice>
+                <p>Total:</p>
+                <span>R${totalPrice}</span>
+              </AmountAndPrice>
+              <button>Finalizar Compra</button>
             </FinalizePurchase>
           </Content>
         </Portal>

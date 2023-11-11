@@ -3,6 +3,7 @@ import { Product } from "../..";
 import {
   AddOrRemoveProductsButtonsContainer,
   AddProductButton,
+  ButtonsAndPriceContainer,
   NumberOfProducts,
   PriceOfProduct,
   ProductContainer,
@@ -13,9 +14,15 @@ import {
 
 interface Props {
   product: Product;
+  handleAddNewItem: (item: Product) => void;
+  handleRemoveItem: (item: Product) => void;
 }
 
-export default function SelectedProducts({ product }: Props) {
+export default function SelectedProducts({
+  product,
+  handleAddNewItem,
+  handleRemoveItem,
+}: Props) {
   return (
     <SelectedProductsContainer>
       <ProductContainer>
@@ -27,15 +34,19 @@ export default function SelectedProducts({ product }: Props) {
         />
         <ProductName>{product.name}</ProductName>
       </ProductContainer>
-      <div>
+      <ButtonsAndPriceContainer>
         <p>Qtd:</p>
         <AddOrRemoveProductsButtonsContainer>
-          <RemoveProductButton>-</RemoveProductButton>
-          <NumberOfProducts>1</NumberOfProducts>
-          <AddProductButton>+</AddProductButton>
+          <RemoveProductButton onClick={() => handleRemoveItem(product)}>
+            -
+          </RemoveProductButton>
+          <NumberOfProducts>{product.quantity}</NumberOfProducts>
+          <AddProductButton onClick={() => handleAddNewItem(product)}>
+            +
+          </AddProductButton>
         </AddOrRemoveProductsButtonsContainer>
-      </div>
-      <PriceOfProduct>{`R$${product.price}`}</PriceOfProduct>
+        <PriceOfProduct>{`R$${product.price}`}</PriceOfProduct>
+      </ButtonsAndPriceContainer>
     </SelectedProductsContainer>
   );
 }
