@@ -45,11 +45,16 @@ export const BuyButton = styled.button`
   border-bottom-right-radius: 8px;
   padding: 0.4375rem 3.625rem 0.59375rem 3.625rem;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   p {
     color: #fff;
     font-size: 0.875rem;
     font-weight: 600;
     line-height: 1.125rem;
+    font-family: "Montserrat", sans-serif;
   }
 `;
 

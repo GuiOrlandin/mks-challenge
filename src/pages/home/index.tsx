@@ -13,6 +13,11 @@ import {
   NumberOfItemsInCart,
   Portal,
   SelectedProductsContainer,
+  SkeletonDescriptionProduct,
+  SkeletonImageProduct,
+  SkeletonNameProduct,
+  SkeletonsContainer,
+  SkeletonsPriceAndNameProduct,
   Title,
   Trigger,
 } from "./styles";
@@ -24,6 +29,8 @@ import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import CardOfProduct from "./components/CardOfProduct";
 import SelectedProducts from "./components/SelectedProducts";
+import { formatNumberWithSeparator } from "@/utils/numberFomater";
+import { Skeleton } from "@mui/material";
 
 export interface Product {
   id: number;
@@ -44,6 +51,7 @@ interface ProductsResponse {
 export default function Home() {
   const [listOfProducts, setListOfProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   async function getProducts() {
     try {
@@ -123,6 +131,9 @@ export default function Home() {
 
   useEffect(() => {
     getProducts();
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   }, []);
 
   return (
@@ -160,7 +171,7 @@ export default function Home() {
             <FinalizePurchase>
               <AmountAndPrice>
                 <p>Total:</p>
-                <span>R${totalPrice}</span>
+                <span>R${formatNumberWithSeparator(totalPrice)}</span>
               </AmountAndPrice>
               <button>Finalizar Compra</button>
             </FinalizePurchase>
@@ -168,13 +179,34 @@ export default function Home() {
         </Portal>
       </HeaderContainer>
       <CardsContainer>
-        {listOfProducts?.map((product) => (
-          <CardOfProduct
-            key={product.id}
-            product={product}
-            handleAddNewItem={() => handleAddNewItem(product)}
-          />
-        ))}
+        {isLoading
+          ? listOfProducts?.map((product) => (
+              <SkeletonsContainer>
+                <SkeletonImageProduct>
+                  <Skeleton variant="rectangular" width={120} height={120} />
+                </SkeletonImageProduct>
+
+                <SkeletonsPriceAndNameProduct>
+                  <SkeletonNameProduct>
+                    <Skeleton variant="text" width={120} height={22} />
+                    <Skeleton variant="text" width={70} height={22} />
+                  </SkeletonNameProduct>
+                  <Skeleton variant="text" width={70} height={62} />
+                </SkeletonsPriceAndNameProduct>
+                <SkeletonDescriptionProduct>
+                  <Skeleton variant="text" width={120} height={22} />
+                  <Skeleton variant="text" width={70} height={22} />
+                </SkeletonDescriptionProduct>
+                <Skeleton variant="rectangular" width={230} height={72} />
+              </SkeletonsContainer>
+            ))
+          : listOfProducts?.map((product) => (
+              <CardOfProduct
+                key={product.id}
+                product={product}
+                handleAddNewItem={() => handleAddNewItem(product)}
+              />
+            ))}
       </CardsContainer>
 
       <FooterContainer>

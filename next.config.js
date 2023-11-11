@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-module.exports = {
+const nextConfig = {
   images: {
     domains: ["mks-sistemas.nyc3.digitaloceanspaces.com"],
   },
 };
-1;
-11;
+
+module.exports = nextConfig;
