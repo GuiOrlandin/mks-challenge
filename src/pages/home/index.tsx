@@ -111,6 +111,14 @@ export default function Home() {
     return totalPriceOfProducts;
   }
 
+  function HandleRemoveSelectedProductTheCart(item: Product) {
+    const cartItemsWithoutProductRemoved = cartItems.filter(
+      (cartItem) => cartItem.id !== item.id
+    );
+
+    setCartItems(cartItemsWithoutProductRemoved);
+  }
+
   const totalPrice = getTotalPrice();
 
   useEffect(() => {
@@ -143,6 +151,9 @@ export default function Home() {
                   key={items.id}
                   handleAddNewItem={() => handleAddNewItem(items)}
                   handleRemoveItem={() => handleRemoveItem(items)}
+                  HandleRemoveSelectedProductTheCart={() =>
+                    HandleRemoveSelectedProductTheCart(items)
+                  }
                 />
               ))}
             </SelectedProductsContainer>

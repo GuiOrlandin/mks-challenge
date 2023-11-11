@@ -178,7 +178,7 @@ export const Title = styled(DialogTitle)`
   font-size: 1.6875rem;
   font-weight: 700;
   color: #ffffff;
-  margin: -11% 90% 13% 10%;
+  margin: -11% 90% 11% 10%;
 `;
 
 export const Content = styled(DialogContent)`

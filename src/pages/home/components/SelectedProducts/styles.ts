@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 export const SelectedProductsContainer = styled.div`
   display: grid;
+  position: relative;
   grid-template-columns: 0.9fr 60px 90px;
   align-items: center;
   background: #ffffff;
   border-radius: 8px;
+  margin-top: 1rem;
   padding: 1.1875rem 0.9375rem 1.1875rem 0.8rem;
 
   p {
@@ -143,5 +145,29 @@ export const ButtonsAndPriceContainer = styled.span`
     p {
       display: none;
     }
+  }
+`;
+
+export const RemoveSelectedProductForCart = styled.span`
+  display: flex;
+  position: absolute;
+  left: 96%;
+  top: -6%;
+  padding: 0.05rem 0.3rem;
+  border-radius: 999px;
+  background: #000000;
+  font-size: 0.875rem;
+  color: #ffff;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 375px) {
+    background: none;
+    color: #000000;
+    font-size: 2.625rem;
+    left: 80%;
+    top: 1%;
   }
 `;
