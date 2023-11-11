@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Product } from "../../index1";
+import { Product } from "../../pages/home/index1";
 import {
   AddOrRemoveProductsButtonsContainer,
   AddProductButton,

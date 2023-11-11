@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import shoppinBagIcon from "../../../../../public/shoppingBagIcon.svg";
+import shoppinBagIcon from "../../../public/shoppingBagIcon.svg";
 
 import {
   BuyButton,
@@ -11,7 +11,7 @@ import {
   ProductNameAndPrice,
   ProductPrice,
 } from "./styles";
-import { Product } from "../../index1";
+import { Product } from "../../pages/home/index1";
 import { formatNumberWithSeparator } from "@/utils/numberFomater";
 
 interface Props {

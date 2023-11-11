@@ -20,15 +20,15 @@ import {
   SkeletonsPriceAndNameProduct,
   Title,
   Trigger,
-} from "./styles";
+} from "../../styles/pages/home/styles";
 
 import * as Dialog from "@radix-ui/react-dialog";
 
 import cartIcon from "../../../public/cartIcon.svg";
 import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
-import CardOfProduct from "./components/CardOfProduct";
-import SelectedProducts from "./components/SelectedProducts";
+import CardOfProduct from "../../components/CardOfProduct";
+import SelectedProducts from "../../components/SelectedProducts";
 import { formatNumberWithSeparator } from "@/utils/numberFomater";
 import { Skeleton } from "@mui/material";
 
