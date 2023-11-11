@@ -2,7 +2,7 @@
 
 ## ▶ Preview
 
-[![Deploy with Vercel](https://vercel.com/button)](https://mks-challenge-snowy-eight.vercel.app/)
+[![Deploy with Vercel](https://vercel.com/button)](https://mks-challenge-7cdwrolab-guiorlandin.vercel.app/)
 
 ## 📃 About
 
