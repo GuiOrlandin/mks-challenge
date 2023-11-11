@@ -1,4 +1,4 @@
-import Home from "@/pages/home";
+import Home from "@/pages/home/index1";
 
 export default function App() {
   return (

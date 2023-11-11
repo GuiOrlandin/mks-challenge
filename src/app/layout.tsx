@@ -5,7 +5,6 @@ import "../styles/globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -19,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={montserrat.className}>
+    <html lang="pt-BR" className={montserrat.className}>
       <body>{children}</body>
     </html>
   );

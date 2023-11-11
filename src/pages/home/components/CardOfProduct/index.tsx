@@ -11,7 +11,7 @@ import {
   ProductNameAndPrice,
   ProductPrice,
 } from "./styles";
-import { Product } from "../..";
+import { Product } from "../../index1";
 import { formatNumberWithSeparator } from "@/utils/numberFomater";
 
 interface Props {
