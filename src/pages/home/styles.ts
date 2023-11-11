@@ -274,7 +274,6 @@ export const SkeletonsPriceAndNameProduct = styled.header`
   display: flex;
   align-items: center;
   gap: 1rem;
-
 `;
 
 export const SkeletonImageProduct = styled.header`
@@ -284,13 +283,8 @@ export const SkeletonImageProduct = styled.header`
   }
 `;
 
-export const SkeletonNameProduct = styled.header`
-  @media (max-width: 375px) {
-  }
-`;
+export const SkeletonNameProduct = styled.header``;
 
 export const SkeletonDescriptionProduct = styled.header`
   margin-right: 5.4rem;
-  @media (max-width: 375px) {
-  }
 `;
