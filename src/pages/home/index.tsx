@@ -180,8 +180,8 @@ export default function Home() {
       </HeaderContainer>
       <CardsContainer>
         {isLoading
-          ? listOfProducts?.map((product) => (
-              <SkeletonsContainer>
+          ? listOfProducts?.map((_, index) => (
+              <SkeletonsContainer key={index}>
                 <SkeletonImageProduct>
                   <Skeleton variant="rectangular" width={120} height={120} />
                 </SkeletonImageProduct>
