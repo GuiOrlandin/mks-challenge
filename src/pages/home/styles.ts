@@ -257,7 +257,7 @@ export const SelectedProductsContainer = styled.div`
   }
 `;
 
-export const SkeletonsContainer = styled.header`
+export const SkeletonsContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -265,26 +265,20 @@ export const SkeletonsContainer = styled.header`
   height: 18.8125rem;
   background: #fff;
   box-shadow: 0 0 10px rgba(55, 55, 55, 0.2);
-
-  @media (max-width: 375px) {
-  }
 `;
 
-export const SkeletonsPriceAndNameProduct = styled.header`
+export const SkeletonsPriceAndNameProduct = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
 `;
 
-export const SkeletonImageProduct = styled.header`
+export const SkeletonImageProduct = styled.div`
   margin-top: 2.5rem;
-
-  @media (max-width: 375px) {
-  }
 `;
 
-export const SkeletonNameProduct = styled.header``;
+export const SkeletonNameProduct = styled.div``;
 
-export const SkeletonDescriptionProduct = styled.header`
+export const SkeletonDescriptionProduct = styled.div`
   margin-right: 5.4rem;
 `;
